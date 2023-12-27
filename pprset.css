@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    font-weight: bold;
+    text-align: center;
+    margin-left: 300px;
+    font-size: large;
+}
+
+h2 {
+    text-align: center;
+}
+
+.formno {
+    text-align: right;
+}
+
+.content-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 0%;
+}
+
+span {
+    margin-right: 40vh;
+}
+
+.dean {
+    font-family: Arial, sans-serif;
+    margin-top: 30px;
+}
