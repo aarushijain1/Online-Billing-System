@@ -29,7 +29,9 @@
             <input type="int" id="formNumber" name="formNo" readonly>
         </div> -->
 
-        <p>1. Name of the Paper Setter:</p>
+        <label for="name">1. Name of the paper setter:</label>
+            <input type="text" id="name" name="name" required>
+        <br><br>
 
         <!-- Department Name -->
         <label for="dept">3. Select Department:</label>
