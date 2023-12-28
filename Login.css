@@ -92,6 +92,12 @@ body{
     color: black;
 }
 
+a {
+    margin-top: 3%;
+    background: rgb(226, 172, 9);
+    color: black;
+}
+
 /* footer{
     height: 23px;
     margin-top: 157px;
