@@ -2,7 +2,7 @@
             <h3>Indira Gandhi Delhi Technical University for Women</h3>
             <div class="dashboard_sidebar_user">
                 <img src="" alt="User Image">
-                <span><?=$user['first_name'] . ' ' . $user['last_name'] ?></span>
+                <span><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] ?></span>
             </div>
             <ul class="menu">
                 <li class="menu-item"><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
