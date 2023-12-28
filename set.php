@@ -12,9 +12,9 @@
     $user = $_SESSION['user'];
     // $userId = $user['id']; // Assuming the user ID is stored in the 'id' field
     
-    // Check if the form is submitted
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Get form data
+
         // $formNo = $_POST['formNo'];
         $department = $_POST['dept'];
         $program = $_POST['prog'];
@@ -24,8 +24,7 @@
         $expenses = $_POST['expenses'];
         $total = $_POST['total'];
         
-    
-        // Insert data into the paper_setting table
+        
         $query = "INSERT INTO erp_portal.paper_setting ( dept, prog, sub_code, sub, charges, expenses, total) 
                   VALUES (:department, :program, :subjectCode, :subj, :charges, :expenses, :total)";
         $stmt = $conn->prepare($query);
