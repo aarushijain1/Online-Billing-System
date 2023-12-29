@@ -34,7 +34,7 @@
         <br><br>
 
         <!-- Department Name -->
-        <label for="dept">3. Select Department:</label>
+        <label for="dept">2. Select Department:</label>
         <select id="department" name="dept" required>
             <option value="" disabled selected>Select an option</option>
             <option value="Applied Sciences and Humanities"> Applied Sciences and Humanities </option>
