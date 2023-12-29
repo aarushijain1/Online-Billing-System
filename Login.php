@@ -78,7 +78,7 @@
                 <div class="loginButtonContainer">
                     <button id="a" type="submit">Sign In</button>
                     <button id="b">Forgot Password</button>
-                    <button id = "c"><a href = "registration_form.php">New User Register</a></button>
+                    <button id = "c"><a href = "registration_form.php" target="_blank">New User Register</a></button>
                 </div>
             </form>
         </div>
