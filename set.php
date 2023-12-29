@@ -2,7 +2,7 @@
     session_start();
 
     if (!isset($_SESSION['user'])) {
-        header('location: Login.php');
+        header('location: dashboard.php');
         exit();
     }
 
@@ -40,7 +40,7 @@
     
         if ($stmt->execute()) {
             // Data inserted successfully
-            echo "Data inserted successfully!";
+            echo "Form filled successfully!";
         } else {
             // Handle the error
             echo "Error inserting data: " . $stmt->errorInfo()[2];
