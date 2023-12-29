@@ -54,7 +54,11 @@ body {
 }
 
 .menu-item:hover {
-    background-color: #2e6b28;
+    background-color: #0d3a09;
+}
+
+.menu-item:hover > .sub-menu {
+    display: block;
 }
 
 .sub-menu {
