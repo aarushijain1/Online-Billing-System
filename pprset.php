@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Paper(s) Setting</title>
     <link rel="icon" href="logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="pprset.css">
+    <style> <?php include "pprset.css" ?> </style>
 </head>
 
 <body>
@@ -114,7 +114,7 @@
         <button type="reset">Reset</button>
     </form>
 
-    <script src="script1.js"></script>
+    <script> <?php require_once("script1.js");?> </script>
 
 </body>
 
