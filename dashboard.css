@@ -9,16 +9,16 @@ body {
 }
 
 .sidebar {
-    width: 200px;
+    width: 250px;
     background-color: #2e6b28;
     color: #ffffff;
-    padding: 0px;
-    transition: width 0.3s ease;
+    padding: 0;
+    transition: width 0.2s ease;
     border: 1px solid rgb(201, 199, 199);
 }
 
 .collapsed {
-    width: 4px;
+    width: 80px;
 }
 
 .main-content {
@@ -30,27 +30,32 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #ffffff;
+    padding: 3px;
+    margin-top: 1px;
+    border-bottom: 1px solid rgb(201, 199, 199);
 }
 
 .toggle-btn {
     cursor: pointer;
     font-size: 20px;
-    margin-right: 20px;
+    color: black;
 }
 
 .logout-btn {
     cursor: pointer;
     font-size: 20px;
-    margin-left: auto;
+    color: black;
 }
 
 .menu-item {
     list-style: none;
-    padding: 10px 0;
+    padding: 7px 0;
     cursor: pointer;
     transition: background-color 0.3s;
     background-color: #2e6b28;
     color: black;
+    font-size: small;
 }
 
 .menu-item:hover {
@@ -75,7 +80,7 @@ body {
 
 h2 {
     font-weight: normal;
-    align-items: center;
+    color: black;
     margin: 0;
 }
 
@@ -93,15 +98,45 @@ h2 {
     color: #ffffff;
 }
 
+.dashboard_sidebar_user {
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+.dashboard_sidebar_user img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
+    margin-left: 10px;
+}
+
+.dashboard_sidebar_user span {
+    font-size: 14px;
+}
+
+.dashboard_sidebar_user span,
+.menu-item a,
+.sub-menu a {
+    color: #ffffff;
+}
+
 h3 {
     background-color: white;
     color: black;
     text-align: center;
     justify-content: center;
     margin: 0;
-    padding: 10px;
+    padding: 7px;
+    font-size: medium;
 }
 
-.dashboard_sidebar_user {
-   margin:15px;
+.menu-item.active {
+    background-color: black;
+}
+
+.menu-item.active .sub-menu {
+    display: block;
 }
