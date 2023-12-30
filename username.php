@@ -42,7 +42,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Username</title>
-    <link rel="stylesheet" href="username.css">
+    <style> <?php include "username.css" ?> </style>
 </head>
 <body>
 
