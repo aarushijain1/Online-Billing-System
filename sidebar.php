@@ -9,7 +9,7 @@
         <li class="menu-item"><a href="pprset.php" target="_blank">Paper Setting</a></li>
         <li class="menu-item"><a href="#">Answer Sheet Evaluation</a></li>
         <li class="menu-item">
-            <a href="#">Practical Exam Conduction </i></a>
+            <a href="#">Practical Exam Conduction</a>
             <ul class="submenu">
                 <li><a href="internalprac.php" target="_blank">Internal Exam</a></li>
                 <li><a href="externalprac.php" target="_blank">External Exam</a></li>
