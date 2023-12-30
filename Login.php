@@ -41,7 +41,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="Login.css">
+    <style> <?php include "Login.css" ?> </style>
     <title>IGDTUW</title>
     <script src="formSwitch.js" defer></script>
 </head>
@@ -84,9 +84,9 @@
         </div>
     </div>
 
-    <!-- <footer>
+    <footer>
         &copy; 2021 All Rights Reserved | Indira Gandhi Delhi Technical University for Women (IGDTUW)
-    </footer> -->
+    </footer>
 
 </body>
 
