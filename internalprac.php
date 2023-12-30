@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internal Examiner</title>
     <link rel="icon" href="logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="internalprac.css">
+    <style> <?php include "internalprac.css" ?> </style>
 </head>
 
 <body>
@@ -182,7 +182,7 @@
         <button type="reset">Reset</button>
 
     </form>
-    <script src="script3.js"></script>
+    <script> <?php require_once("script3.js");?> </script>
 </body>
 
 </html>
