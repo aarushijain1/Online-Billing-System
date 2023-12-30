@@ -1,72 +1,65 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
+<?php
+session_start();
 
-.container {
-    display: flex;
-    align-items: center;
-}
+if ($_POST) {
+    include("connection.php");
 
-.text {
-    font-weight: bold;
-    text-align: center;
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $dob = $_POST['dob'];
+    $gender = $_POST['gender'];
+    $resphoneNumber = $_POST['resphoneNumber'];
+    $offphoneNumber = $_POST['offphoneNumber'];
+    $mobileNumber = $_POST['mobileNumber'];
+    $email = $_POST['email'];
+    $offemail = $_POST['offemail'];
+    $accno = $_POST['accno'];
+    $accname = $_POST['accname'];
+    $bank = $_POST['bank'];
+    $ifsc = $_POST['ifsc'];
+    $pan = $_POST['pan'];
+    $address = $_POST['address'];
+    $country = $_POST['country'];
+    $state = $_POST['state'];
+    $city = $_POST['city'];
+    $district = $_POST['district'];
+    $pincode = $_POST['pincode'];
+    $position = $_POST['position'];
+    $department = $_POST['department'];
+    $institution = $_POST['institution'];
+    $employmentStatus = $_POST['employmentStatus'];
+    $startingDate = $_POST['startingDate'];
+    $image = $_POST['image'];
+    $pancard = $_POST['pancard'];
+    $resume = $_POST['resume'];
 
-    font-size: medium;
-}
+    // Validate and sanitize user input to prevent SQL injection
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-form {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    // Insert user data into the database
+    // Insert user data into the database
+    $query = 'INSERT INTO erp_portal.newreg (
+        first_name, last_name, dob, gender, resphoneNumber, offphoneNumber, mobileNumber, email, offemail, accno, accname, bank, ifsc, pan, address, country, state, city, district, pincode, position, department, institution, employmentStatus, startingDate, image, 
+        pancard, resume) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    $stmt = $conn->prepare($query);
+    $stmt->execute([
+        $first_name, $last_name, $dob, $gender, $resphoneNumber, $offphoneNumber, $mobileNumber, $email, $offemail, $accno, $accname,
+        $bank, $ifsc, $pan, $address, $country, $state, $city, $district, $pincode, $position, $department, $institution, $employmentStatus, $startingDate, $image, $pancard, $resume
+    ]);
+    
 
-h2,
-h3 {
-    color: #333;
-}
+    // Fetch the user information from the database after registration
+    $query = 'SELECT * FROM users WHERE email = ?';
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$email]);
 
-.form-group {
-    margin-bottom: 20px;
-}
+    if ($stmt->rowCount() > 0) {
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $user = $stmt->fetchAll()[0];
+        $_SESSION['user'] = $user;
+    }
 
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
+    header('Location: username.php');
 }
-
-input,
-select,
-file {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-input[type="file"] {
-    border: none;
-    background: #f4f4f4;
-    padding: 8px;
-    border-radius: 4px;
-}
+?>
