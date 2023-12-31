@@ -18,7 +18,7 @@ body {
 }
 
 .collapsed {
-    width: 80px;
+    width: 150px;
 }
 
 .main-content {
@@ -54,7 +54,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     background-color: #2e6b28;
-    color: black;
+    color: white;
     font-size: small;
 }
 
@@ -91,6 +91,10 @@ h2 {
 
 .sidebar li {
     padding: 10px;
+}
+
+.sidebar li a:hover{
+    background-color: #0d3a09;
 }
 
 .sidebar a {
