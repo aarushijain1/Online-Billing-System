@@ -32,6 +32,7 @@ if ($_POST) {
     $image = $_POST['image'];
     $pancard = $_POST['pancard'];
     $resume = $_POST['resume'];
+    $off_address = $_POST['off_address'];
 
     // Validate and sanitize user input to prevent SQL injection
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -40,12 +41,13 @@ if ($_POST) {
     // Insert user data into the database
     $query = 'INSERT INTO erp_portal.newreg (
         first_name, last_name, dob, gender, resphoneNumber, offphoneNumber, mobileNumber, email, offemail, accno, accname, bank, ifsc, pan, address, country, state, city, district, pincode, position, department, institution, employmentStatus, startingDate, image, 
-        pancard, resume) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        pancard, resume, off_address) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     $stmt = $conn->prepare($query);
     $stmt->execute([
-        $first_name, $last_name, $dob, $gender, $resphoneNumber, $offphoneNumber, $mobileNumber, $email, $offemail, $accno, $accname,
-        $bank, $ifsc, $pan, $address, $country, $state, $city, $district, $pincode, $position, $department, $institution, $employmentStatus, $startingDate, $image, $pancard, $resume
+        $first_name, $last_name, $dob, $gender, $resphoneNumber, $offphoneNumber, $mobileNumber, $email, $offemail, 
+        $accno, $accname, $bank, $ifsc, $pan, $address, $country, $state, $city, $district, $pincode, 
+        $position, $department, $institution, $employmentStatus, $startingDate, $image, $pancard, $resume, $off_address
     ]);
     
 
