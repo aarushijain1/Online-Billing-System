@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    
+    if(!isset($_SESSION['user'])) header('location: dashboard.php');
+
+    $user = $_SESSION['user'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +37,7 @@
             <input type="text" id="formNumber" name="formNumber" readonly>
         </div> -->
 
-        <p>1. Name of the Paper Setter: </p>
+        <p>1. Name of the Paper Setter: <span><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] ?></span> </p>
         <p>2. PAN No.: </p>
         <p>3. Bank Account No. : </p>
         <p>4. IFSC Code: </p>
