@@ -1,3 +1,62 @@
+<?php
+    session_start();
+    
+    if(!isset($_SESSION['user'])) header('location: dashboard.php');
+
+    $user = $_SESSION['user'];
+
+    include("connection.php");
+
+    // Fetch res_add information from the newreg table
+    $addressQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $addressStmt = $conn->prepare($addressQuery);
+    $addressStmt->execute([$user['first_name']]);
+    $addressInfo = $addressStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch res_mob_no information from the newreg table
+    $resphoneNumberQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $resphoneNumberStmt = $conn->prepare($resphoneNumberQuery);
+    $resphoneNumberStmt->execute([$user['first_name']]);
+    $resphoneNumberInfo = $resphoneNumberStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch off_mob_no information from the newreg table
+    $offphoneNumberQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $offphoneNumberStmt = $conn->prepare($offphoneNumberQuery);
+    $offphoneNumberStmt->execute([$user['first_name']]);
+    $offphoneNumberInfo = $offphoneNumberStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch mob_no information from the newreg table
+    $mobileNumberQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $mobileNumberStmt = $conn->prepare($mobileNumberQuery);
+    $mobileNumberStmt->execute([$user['first_name']]);
+    $mobileNumberInfo = $mobileNumberStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch email information from the newreg table
+    $emailQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $emailStmt = $conn->prepare($emailQuery);
+    $emailStmt->execute([$user['first_name']]);
+    $emailInfo = $emailStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch bank no information from the newreg table
+    $bankQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $bankStmt = $conn->prepare($bankQuery);
+    $bankStmt->execute([$user['first_name']]);
+    $bankInfo = $bankStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch bank information from the newreg table
+    $bankQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $bankStmt = $conn->prepare($bankQuery);
+    $bankStmt->execute([$user['first_name']]);
+    $bankInfo = $bankStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch ifsc information from the newreg table
+    $ifscQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $ifscStmt = $conn->prepare($ifscQuery);
+    $ifscStmt->execute([$user['first_name']]);
+    $ifscInfo = $ifscStmt->fetch(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,15 +88,15 @@
             <input type="text" id="formNumber" name="formNumber" readonly>
         </div> -->
 
-        <p>1. Name of External Examiner: </p>
+        <p>1. Name of External Examiner: <span><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] ?></span></p>
 
-        <p>2. Residential Address: </p>
+        <p>2. Residential Address: <?= isset($addressInfo['address']) ? $addressInfo['address'] : 'Not available' ?></p> </p>
 
-        <p>3. A)Tel No.(Res): </p>
+        <p>3. A)Tel No.(Res): <?= isset($resphoneNumberInfo['resphoneNumber']) ? $resphoneNumberInfo['resphoneNumber'] : 'Not available' ?></p></p>
 
-        <p> B)Tel(Off.): </p>
+        <p> B)Tel(Off.): <?= isset($offphoneNumberInfo['offphoneNumber']) ? $offphoneNumberInfo['offphoneNumber'] : 'Not available' ?></p></p>
 
-        <p> C)Tel(Mobile): </p>
+        <p> C)Tel(Mobile): <?= isset($mobileNumberInfo['mobileNumber']) ? $mobileNumberInfo['mobileNumber'] : 'Not available' ?></p></p>
 
         <!-- Department Name -->
         <label for="Department">4. Select Department:</label>
@@ -55,11 +114,10 @@
         </select>
         <br>
 
-        <p>5. Email Address: </p>
-        <p>6. Bank Account Number: </p>
-        <p>7. Name of the Bank:</p>
-        <p>7. IFSC Code:</p>
-        <p>7. Branch:</p>
+        <p>5. Email Address: <?= isset($emailInfo['email']) ? $emailInfo['email'] : 'Not available' ?></p> </p>
+        <p>6. Bank Account Number: <?= isset($bankInfo['bank_no']) ? $bankInfo['bank_no'] : 'Not available' ?></p>
+        <p>7. Name of the Bank: <?= isset($bankInfo['bank']) ? $bankInfo['bank'] : 'Not available' ?></p>
+        <p>8. IFSC Code: <?= isset($ifscInfo['ifsc']) ? $ifscInfo['ifsc'] : 'Not available' ?></p> </p>
 
         <div class="content-box">
             <h3><b><u>CONDUCT OF PRACTICAL EXAMINATION(EXTERNAL EXAMINER)</u></b></h3>
