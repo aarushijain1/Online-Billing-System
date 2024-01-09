@@ -4,7 +4,7 @@ function toggleSidebar() {
   
   function logout() {
     // Add your logout logic here
-    alert("Logout clicked");
+    //alert("Logout clicked");
   }
 
   document.addEventListener('DOMContentLoaded', function () {
