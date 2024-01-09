@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    
+    if(!isset($_SESSION['user'])) header('location: dashboard.php');
+
+    $user = $_SESSION['user'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,9 +38,7 @@
             <input type="int" id="formNumber" name="formNo" readonly>
         </div> -->
 
-        <label for="name">1. Name of the paper setter:</label>
-            <input type="text" id="name" name="name" required>
-        <br><br>
+        <p>1. Name of the Paper Setter: <span><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] ?></span></p>
 
         <!-- Department Name -->
         <label for="dept">2. Select Department:</label>
