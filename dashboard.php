@@ -4,6 +4,7 @@
     if(!isset($_SESSION['user'])) header('location: Login.php');
 
     $user = $_SESSION['user'];
+   
 ?>
 
 <!DOCTYPE html>
