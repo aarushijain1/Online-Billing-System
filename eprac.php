@@ -25,6 +25,7 @@
         // $bankBranch = $_POST['bank_branch'];
         $program = $_POST['prog'];
         $branch = $_POST['branch'];
+        $sem = $_POST['sem'];
         $subjectCode = $_POST['paper_code'];
         $subj = $_POST['paper_name'];
         $session = $_POST['session'];
@@ -39,9 +40,9 @@
         $amt3 = $_POST['amt3'];        
         
         $query = "INSERT INTO erp_portal.external_exam 
-                  ( dept, prog, branch, paper_code, paper_name, session, prac, student, no, amt, amt1, amt2, totalamt, rsinword, amt3) 
+                  ( dept, prog, branch, sem, paper_code, paper_name, session, prac, student, no, amt, amt1, amt2, totalamt, rsinword, amt3) 
                   VALUES 
-                  (:department, :program, :branch, :subjectCode, :subj, :session, :prac, :student, :no, :amt, :amt1, :amt2, :totalamt, :rsinword, :amt3)";
+                  (:department, :program, :branch, :sem, :subjectCode, :subj, :session, :prac, :student, :no, :amt, :amt1, :amt2, :totalamt, :rsinword, :amt3)";
                   
         $stmt = $conn->prepare($query);
 
@@ -58,6 +59,7 @@
         // $stmt->bindParam(':bankBranch', $bankBranch);
         $stmt->bindParam(':program', $program);
         $stmt->bindParam(':branch', $branch);
+        $stmt->bindParam(':sem', $sem);
         $stmt->bindParam(':subjectCode', $subjectCode);
         $stmt->bindParam(':subj', $subj);
         $stmt->bindParam(':session', $session);
