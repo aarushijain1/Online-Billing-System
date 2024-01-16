@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     
     if(!isset($_SESSION['user'])) header('location: dashboard.php');
@@ -60,7 +61,7 @@
 
             <!-- Programme -->
             <label for="prog">Programme:</label>
-            <select id="programme" name="prog">
+            <select id="programme" name="prog" >
                 <option value="" disabled selected>Select an option</option>
                 <option value="B-Tech">B-Tech</option>
                 <option value="B.Arch">B.Arch</option>
@@ -74,16 +75,31 @@
             </select>
             <br>
 
+            <!-- Semester -->
+            <label for="sem">Semester:</label>
+            <select id="sem" name="sem" >
+                <option value="" disabled selected>Select an option</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+            <br>
+
             <!-- Subject Code -->
-            <br>
             <label for="sub_code">Enter Subject Code:</label>
-            <input type="text" id="subcode" name="sub_code" required>
-            <br>
+            <input type="text" id="subcode" name="sub_code" required onclick="showSubjectCodeMessage()" onblur="hideSubjectCodeMessage()">
+            <p id="subjectCodeMessage" style="display: none; color: #FF0000; margin:0; padding:0; font-size: smaller;">Format should be: BAS-101</p>
 
             <!-- Subject -->
             <br>
             <label for="subj">Enter Subject:</label>
-            <input type="text" id="sub" name="sub" required>
+            <input type="text" id="sub" name="sub" required onclick="showSubjectMessage()" onblur="hideSubjectMessage()">
+            <p id="subjectMessage" style="display: none; color: #FF0000; margin:0; padding:0; font-size: smaller;">Format should be: Information Technology</p>
             <hr>
 
             <p><b>Details</b></p>
