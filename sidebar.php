@@ -1,7 +1,23 @@
+<?php
+    // session_start();
+    
+    // if(!isset($_SESSION['user'])) header('location: dashboard.php');
+
+    // $user = $_SESSION['user'];
+
+    include("connection.php");
+
+    $imageQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $imageStmt = $conn->prepare($imageQuery);
+    $imageStmt->execute([$user['first_name']]);
+    $imageInfo = $imageStmt->fetch(PDO::FETCH_ASSOC);
+    
+    ?>
+
 <div class="sidebar">
     <h3>Indira Gandhi Delhi Technical University for Women</h3>
     <div class="dashboard_sidebar_user">
-        <img src="" alt="User Image">
+        <p><?= isset($imageInfo['image']) ? $imageInfo['image'] : 'Not available' ?></p> </p>
         <span><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] ?></span>
     </div>
     <ul class="menu">
