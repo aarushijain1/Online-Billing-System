@@ -10,7 +10,7 @@
     
     // Get user details
     $user = $_SESSION['user'];
-    // $userId = $user['id']; // Assuming the user ID is stored in the 'id' field
+    // $userId = $user['id'];                   // Assuming the user ID is stored in the 'id' field
     
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,6 +18,7 @@
         // $formNo = $_POST['formNo'];
         $department = $_POST['dept'];
         $program = $_POST['prog'];
+        $sem = $_POST['sem'];
         $subjectCode = $_POST['sub_code'];
         $subj = $_POST['sub'];
         $charges = $_POST['charges'];
@@ -25,13 +26,14 @@
         $total = $_POST['total'];
         
         
-        $query = "INSERT INTO erp_portal.paper_setting ( dept, prog, sub_code, sub, charges, expenses, total) 
-                  VALUES (:department, :program, :subjectCode, :subj, :charges, :expenses, :total)";
+        $query = "INSERT INTO erp_portal.paper_setting ( dept, prog, sem, sub_code, sub, charges, expenses, total) 
+                  VALUES (:department, :program, :sem, :subjectCode, :subj, :charges, :expenses, :total)";
         $stmt = $conn->prepare($query);
         // $stmt->bindParam(':userId', $userId);
         // $stmt->bindParam(':formNo', $formNo);
         $stmt->bindParam(':department', $department);
         $stmt->bindParam(':program', $program);
+        $stmt->bindParam(':sem', $sem);
         $stmt->bindParam(':subjectCode', $subjectCode);
         $stmt->bindParam(':subj', $subj);
         $stmt->bindParam(':charges', $charges);
