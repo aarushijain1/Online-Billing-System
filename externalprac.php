@@ -136,7 +136,7 @@
                 <option value="M.B.A.">M.B.A.</option>
                 <option value="Ph.D.">Ph.D.</option>
             </select>
-            <br><br>
+            <br>
 
             <!-- Branch -->
             <label for="branch">Branch:</label>
@@ -166,17 +166,31 @@
             </select>
             <br>
 
+            <label for="sem">Semester:</label>
+            <select id="sem" name="sem" >
+                <option value="" disabled selected>Select an option</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+
             <!-- Paper Code -->
             <br>
             <label for="pprcode">Enter Paper Code:</label>
-            <input type="text" id="pprcode" name="paper_code" required>
-            <br>
+            <input type="text" id="pprcode" name="paper_code" required onclick="showSubjectCodeMessage()" onblur="hideSubjectCodeMessage()">
+            <p id="subjectCodeMessage" style="display: none; color: #FF0000; margin:0; padding:0; font-size: smaller;">Format should be: BAS-101</p>
 
             <!-- Paper Name -->
             <br>
             <label for="ppr">Enter Paper Name:</label>
-            <input type="text" id="ppr" name="paper_name" required>
-            <br><br>
+            <input type="text" id="ppr" name="paper_name" required onclick="showSubjectMessage()" onblur="hideSubjectMessage()">
+            <p id="subjectMessage" style="display: none; color: #FF0000; margin:0; padding:0; font-size: smaller;">Format should be: Information Technology</p>
+            <br>
 
             <label for="session">Session:</label>
             <select id="session" name="session">
@@ -185,7 +199,7 @@
                 <option value="2nd Session">2nd Session</option>
                 <option value="3nd Session">3nd Session</option>
             </select>
-            <br><br>
+            <br>
 
             <label for="prac">Practical:</label>
             <select id="prac" name="prac">
@@ -195,7 +209,7 @@
                 <option value="Dissertation">Dissertation</option>
                 <option value="Internship">Internship</option>
             </select>
-            <br><br>
+            <br>
         </div>
 
         <div class="content-box1">
