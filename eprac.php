@@ -13,65 +13,62 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // $name = $_POST['Name'];
-        // $address = $_POST['address'];
-        // $resTel = $_POST['res_tel'];
-        // $resOff = $_POST['res_off'];
-        // $resMob = $_POST['res_mob'];
-        $department = $_POST['dept'];
-        // $email = $_POST['email'];
+        // $pan = $_POST['Pan'];
         // $bankAcc = $_POST['bank_acc'];
-        // $bankName = $_POST['bank_name'];
         // $ifsc = $_POST['ifsc'];
-        // $bankBranch = $_POST['bank_branch'];
-        $program = $_POST['prog'];
-        $branch = $_POST['branch'];
-        $sem = $_POST['sem'];
-        $subjectCode = $_POST['paper_code'];
-        $subj = $_POST['paper_name'];
-        $session = $_POST['session'];
-        $prac = $_POST['prac'];
-        $student = $_POST['student'];
-        $no = $_POST['no'];
-        $amt = $_POST['amt'];
-        $amt1 = $_POST['amt1'];
-        $amt2 = $_POST['amt2'];
-        $totalamt = $_POST['totalamt'];
-        $rsinword = $_POST['rsinword'];
-        $amt3 = $_POST['amt3'];        
+        // $Resaddress = $_POST['res_address'];
+        // $Offaddress = $_POST['off_address'];
+        // $resMob = $_POST['res_mob'];
+        // $email = $_POST['email'];
+            // $setQP = $_POST['setQP']; 
+            $date = $_POST['date'];
+            $Asheet = $_POST['Asheet'];
+            $conveyance = $_POST['conveyance'];
+            $remark = $_POST['remark'];
+            $user = $_POST['user'];
+            $amt3 = $_POST['amt3'];
+            $users = $_POST['users'];
+            // $gross = $_POST['gross'];
+            // $tds = $_POST['tds'];
+            // $net = $_POST['net'];
+       
         
-        $query = "INSERT INTO erp_portal.external_exam 
-                  ( dept, prog, branch, sem, paper_code, paper_name, session, prac, student, no, amt, amt1, amt2, totalamt, rsinword, amt3) 
+        $query = "INSERT INTO erp_portal.paper_evaluation 
+                  ( date, Asheet, conveyance, remark, user, amt3, users) 
                   VALUES 
-                  (:department, :program, :branch, :sem, :subjectCode, :subj, :session, :prac, :student, :no, :amt, :amt1, :amt2, :totalamt, :rsinword, :amt3)";
+                  ( :date, :Asheet, :conveyance, :remark, :user, :amt3, :users)";
                   
         $stmt = $conn->prepare($query);
 
         // $stmt->bindParam(':name', $name);
-        // $stmt->bindParam(':address', $address);
-        // $stmt->bindParam(':resTel', $resTel);
-        // $stmt->bindParam(':resOff', $resOff);
-        // $stmt->bindParam(':resMob', $resMob);
-        $stmt->bindParam(':department', $department);
-        // $stmt->bindParam(':email', $email);
+        // $stmt->bindParam(':pan', $pan);
         // $stmt->bindParam(':bankAcc', $bankAcc);
-        // $stmt->bindParam(':bankName', $bankName);
         // $stmt->bindParam(':ifsc', $ifsc);
-        // $stmt->bindParam(':bankBranch', $bankBranch);
-        $stmt->bindParam(':program', $program);
-        $stmt->bindParam(':branch', $branch);
-        $stmt->bindParam(':sem', $sem);
-        $stmt->bindParam(':subjectCode', $subjectCode);
-        $stmt->bindParam(':subj', $subj);
-        $stmt->bindParam(':session', $session);
-        $stmt->bindParam(':prac', $prac);
-        $stmt->bindParam(':student', $student);
-        $stmt->bindParam(':no', $no);
-        $stmt->bindParam(':amt', $amt);
-        $stmt->bindParam(':amt1', $amt1);
-        $stmt->bindParam(':amt2', $amt2);
-        $stmt->bindParam(':totalamt', $totalamt);
-        $stmt->bindParam(':rsinword', $rsinword);
-        $stmt->bindParam(':amt3', $amt3);
+        // $stmt->bindParam(':Resaddress', $Resaddress);
+        // $stmt->bindParam(':Offaddress', $Offaddress);
+        // $stmt->bindParam(':resMob', $resMob);
+        // $stmt->bindParam(':email', $email);
+        //    $stmt->bindParam(':setQP', $setQP);
+           $stmt->bindParam(':date', $date);
+           $stmt->bindParam(':Asheet', $Asheet);
+           $stmt->bindParam(':conveyance', $conveyance);
+           $stmt->bindParam(':remark', $remark);
+           $stmt->bindParam(':user', $user);
+           $stmt->bindParam(':amt3', $amt3);
+           $stmt->bindParam(':users', $users);
+        //    $stmt->bindParam(':gross', $gross);
+        //    $stmt->bindParam(':tds', $tds);
+        //    $stmt->bindParam(':net', $net);
+
+        if (isset($_POST['answer'])) {
+            // Retrieve the selected value
+            $answer = $_POST['answer'];
+    
+            // Now you can use $answer in your database insertion code or elsewhere
+        } else {
+            // Handle the case when the 'answer' key is not set
+            echo "Please select an answer to the question.";
+        }
 
         if ($stmt->execute()) {
             // Data inserted successfully
