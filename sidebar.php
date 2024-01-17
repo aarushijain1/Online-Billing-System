@@ -17,7 +17,6 @@
 <div class="sidebar">
     <h3>Indira Gandhi Delhi Technical University for Women</h3>
     <div class="dashboard_sidebar_user">
-        <p><?= isset($imageInfo['image']) ? $imageInfo['image'] : 'Not available' ?></p> </p>
         <span><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] ?></span>
     </div>
     <ul class="menu">
@@ -34,7 +33,7 @@
                     </ul>
                 </div>
             </li>
-        <li class="menu-item"><a href="#">Visiting Faculty</a></li>
+        
     </ul>
 </div>
 
