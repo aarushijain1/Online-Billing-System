@@ -55,6 +55,15 @@
     $ifscStmt->execute([$user['first_name']]);
     $ifscInfo = $ifscStmt->fetch(PDO::FETCH_ASSOC);
 
+    $otherBankNameQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+$otherBankNameStmt = $conn->prepare($otherBankNameQuery);
+$otherBankNameStmt->execute([$user['first_name']]);
+$otherBankNameInfo = $otherBankNameStmt->fetch(PDO::FETCH_ASSOC);
+
+// Other Bank Name
+$otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo['otherBankName'] : '';
+
+
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +125,13 @@
 
         <p>5. Email Address: <?= isset($emailInfo['email']) ? $emailInfo['email'] : 'Not available' ?></p> </p>
         <p>6. Bank Account Number: <?= isset($bankInfo['bank_no']) ? $bankInfo['bank_no'] : 'Not available' ?></p>
-        <p>7. Name of the Bank: <?= isset($bankInfo['bank']) ? $bankInfo['bank'] : 'Not available' ?></p>
+        <p>7. Name of the Bank:  <?php
+    if ($bankInfo['bank'] === 'other') {
+        echo isset($bankInfo['otherBankName']) ? $bankInfo['otherBankName'] : 'Not available';
+    } else {
+        echo $bankInfo['bank'];
+    }
+    ?></p>
         <p>8. IFSC Code: <?= isset($ifscInfo['ifsc']) ? $ifscInfo['ifsc'] : 'Not available' ?></p> </p>
 
         <div class="content-box">
@@ -239,14 +254,14 @@
 
             <p class="pay"> Received Payment</p>
 
-            <p id="currentDate"></p>
+            <p id="currentDate"></p><br><br><br><br>
 
             <p><b>Signature of Examiner <br><br><br>Verfication by the Centre Superintendent (Practical) of Concerned Department</b></p>
             <hr>
             <p>Name of the Centre Superintendent (Practical):</p>
-            <p>It is certified that the detail mentioned above are correct of the best of my knowledge and belief. The marks of the Exam has been entered in the Examination Portal and hard copy of attendance sheet and award list duly signed by External Examiner has been submitted in the Examination Divisions.</p><br>
+            <p>It is certified that the detail mentioned above are correct of the best of my knowledge and belief. The marks of the Exam has been entered in the Examination Portal and hard copy of attendance sheet and award list duly signed by External Examiner has been submitted in the Examination Divisions.</p><br><br><br>
             <p>Signature of Centre Superintendent (Practical):</p>
-            <p><b>Countersigned by</b></p>
+            <p id="sign"><b>Countersigned by</b></p>
             <p><span>Consultant (Exam)</span><span>Dean(EA)/Dy.COE</span></p>
 
         </div>
