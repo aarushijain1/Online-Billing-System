@@ -5,6 +5,37 @@
     if(!isset($_SESSION['user'])) header('location: dashboard.php');
 
     $user = $_SESSION['user'];
+    include("connection.php");
+
+    // Fetch PAN card information from the newreg table
+    $panQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $panStmt = $conn->prepare($panQuery);
+    $panStmt->execute([$user['first_name']]);
+    $panInfo = $panStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch bank no information from the newreg table
+    $bankQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $bankStmt = $conn->prepare($bankQuery);
+    $bankStmt->execute([$user['first_name']]);
+    $bankInfo = $bankStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch ifsc information from the newreg table
+    $ifscQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $ifscStmt = $conn->prepare($ifscQuery);
+    $ifscStmt->execute([$user['first_name']]);
+    $ifscInfo = $ifscStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch res_add information from the newreg table
+    $addressQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $addressStmt = $conn->prepare($addressQuery);
+    $addressStmt->execute([$user['first_name']]);
+    $addressInfo = $addressStmt->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch mob_no information from the newreg table
+    $mobileNumberQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $mobileNumberStmt = $conn->prepare($mobileNumberQuery);
+    $mobileNumberStmt->execute([$user['first_name']]);
+    $mobileNumberInfo = $mobileNumberStmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -40,9 +71,14 @@
         </div> -->
 
         <p>1. Name of the Paper Setter: <span><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] ?></span></p>
+        <p>2. Residential Address: <?= isset($addressInfo['address']) ? $addressInfo['address'] : 'Not available' ?></p> </p>
+        <p>3. PAN No.: <?= isset($panInfo['pan']) ? $panInfo['pan'] : 'Not available' ?></p>
+        <p>4. Bank Account No. : <?= isset($bankInfo['bank_no']) ? $bankInfo['bank_no'] : 'Not available' ?></p>
+        <p>5. IFSC Code: <?= isset($ifscInfo['ifsc']) ? $ifscInfo['ifsc'] : 'Not available' ?></p> </p>       
+        <p>6. Mobile No. : <?= isset($mobileNumberInfo['mobileNumber']) ? $mobileNumberInfo['mobileNumber'] : 'Not available' ?></p> </p>
 
         <!-- Department Name -->
-        <label for="dept">2. Select Department:</label>
+        <label for="dept">7. Select Department:</label>
         <select id="department" name="dept" required>
             <option value="" disabled selected>Select an option</option>
             <option value="Applied Sciences and Humanities"> Applied Sciences and Humanities </option>
@@ -120,11 +156,11 @@
 
         <p class="pay"> Received Payment</p>
 
-        <p id="currentDate"></p>
+        <p id="currentDate"></p><br><br>
 
-        <b><span>Counter-signed</span></b>
-        <b><span>Verified</span></b>
-        <b><span>Signature of Examiner</span></b>
+        <b><span>Counter-signed</span></b><br><br><br><br>
+        <b><span>Verified</span></b><br><br><br><br>
+        <b><span>Signature of Examiner</span></b><br><br><br><br>
 
         <div class="dean">
             <b>Dean (Examination Affairs)/ Head of Instituion</b>
