@@ -27,12 +27,16 @@
             <?php include('navbar.php') ?>
             <!-- Rest of your main content goes here -->
         </div>
+        
         <!-- sidebar -->
 
         <div class="main-content">
             <!-- Rest of your main content goes here -->
         </div>
+        
     </div>
+    
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
     <script> <?php require_once("script.js");?> </script>
