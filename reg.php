@@ -16,6 +16,10 @@ if ($_POST) {
     $accno = $_POST['accno'];
     $accname = $_POST['accname'];
     $bank = $_POST['bank'];
+
+    $otherBankName = $_POST['otherBank'];
+    $bankName = ($selectedBank === 'other') ? $otherBankName : $selectedBank;
+
     $ifsc = $_POST['ifsc'];
     $pan = $_POST['pan'];
     $address = $_POST['address'];
@@ -41,13 +45,13 @@ if ($_POST) {
     // Insert user data into the database
     // Insert user data into the database
     $query = 'INSERT INTO erp_portal.newreg (
-        first_name, last_name, dob, gender, resphoneNumber, offphoneNumber, mobileNumber, email, offemail, accno, accname, bank, ifsc, pan, address, country, state, city, district, pincode, position, department, institution, employmentStatus, image, 
+        first_name, last_name, dob, gender, resphoneNumber, offphoneNumber, mobileNumber, email, offemail, accno, accname, bank,otherBankName, ifsc, pan, address, country, state, city, district, pincode, position, department, institution, employmentStatus, image, 
         pancard, resume, off_address, sign, bank_no) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?)';
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?)';
     $stmt = $conn->prepare($query);
     $stmt->execute([
         $first_name, $last_name, $dob, $gender, $resphoneNumber, $offphoneNumber, $mobileNumber, $email, $offemail, 
-        $accno, $accname, $bank, $ifsc, $pan, $address, $country, $state, $city, $district, $pincode, 
+        $accno, $accname, $bank,$otherBankName, $ifsc, $pan, $address, $country, $state, $city, $district, $pincode, 
         $position, $department, $institution, $employmentStatus, $image, $pancard, $resume, $off_address, $sign, $bank_no
     ]);
     
