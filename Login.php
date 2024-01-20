@@ -80,6 +80,7 @@
                     <button id="b">Forgot Password</button>
                     <button id = "c"><a href = "registration_form.php" target="_blank">New User Register</a></button>
                 </div>
+                <div class="admin"><a href = "adminLogin.php" target="_blank">Are you an Admin?</a></div>
             </form>
         </div>
     </div>
