@@ -172,8 +172,8 @@
         </div>
 
         <div class="form-group">
-            <label for="bank_no">Bank No.:</label>
-            <input type="text" id="bank_no" name="bank_no" required>
+            <label for="bank_branch">Bank Branch Name:</label>
+            <input type="text" id="bank_branch" name="bank_branch" required>
         </div>
 
         <div class="form-group">
