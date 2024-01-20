@@ -24,7 +24,7 @@
             if (password_verify($password, $user['password'])) {
                 // Store the user information in the session
                 $_SESSION['user'] = $user;
-                header('Location: adminLogin.php');
+                header('Location: admindashboard.php');
             } else {
                 $error_message = 'Invalid password. Please try again.';
             }
@@ -88,9 +88,9 @@
     document.getElementById('c').addEventListener('click', function () {
     window.open('adminregistration_form.php','_blank');
 });
-document.getElementById('a').addEventListener('click', function () {
-    window.open('admindashboard.php','_blank');
-});
+// document.getElementById('a').addEventListener('click', function () {
+//     window.open('admindashboard.php');
+// });
 </script>
 
     <footer>
