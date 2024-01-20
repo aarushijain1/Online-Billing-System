@@ -1,5 +1,5 @@
 <?php
-    
+
     include("connection.php");
 
     $query = 'SELECT * FROM erp_portal.internal_exam 
@@ -8,6 +8,7 @@
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +20,36 @@
     <title>Internal Examiner</title>
     <link rel="icon" href="logo.jpg" type="image/x-icon">
     <style> <?php include "admin.css" ?> </style>
+
+    <!-- Add these lines in the <head> section of your HTML -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+    <style>      
+
+        #myTable_filter input {
+        width: 200px; /* Adjust the width as needed */
+        padding: 8px;
+        margin-bottom: 15px;
+        margin-left:3px;
+        border: 1px solid black;
+        border-radius: 8px;
+        box-sizing: border-box;
+        background: #fff url('https://cdn.datatables.net/1.10.25/images/search.png') no-repeat right;
+        background-size: 20px 20px;
+        }
+
+    </style>
+
 </head>
+
+<body>
 
 <div class="dashboard">
     <h2>Internal Practical Details</h2>
 
-    <table>
+    <table id = "myTable">
         <thead>
             <tr>
                 <th>ID</th>
@@ -38,7 +63,8 @@
                 <th>Email</th>
                 <th>PAN No.</th>
                 <th>Bank Account No.</th>
-                <th>Bank Account Name</th>
+                <th>Account Holder Name</th>
+                <th>Bank Name</th>
                 <th>IFSC Code</th>
                 <th>Bank Branch</th>
                 <th>Program</th>
@@ -56,10 +82,12 @@
                 <th>User Conveyance Charges</th>
                 <th>Total Amt.</th>
                 <th>Total Amt in Words</th>
+                
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data as $row): ?>
+        <?php foreach ($data as $row): ?>
+                
                 <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['currentDate']; ?></td>
@@ -99,9 +127,24 @@
                     <td><?php echo $row['rsinword']; ?></td>
                                         
                 </tr>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
         </tbody>
     </table>
 </div>
+
+<script>
+   
+    $(document).ready(function() {
+        $('#myTable').DataTable({
+            "paging": false, // Disable pagination if you want
+            "ordering": true, // Enable sorting
+            "searching": true, // Enable search/filtering
+            "info": false // Disable information display (e.g., "Showing 1 to 10 of 57 entries")
+        });
+    });
+
+</script>
+
+</body>
 
 </html>
