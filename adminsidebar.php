@@ -7,7 +7,7 @@
 
     include("connection.php");
 
-    $imageQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $imageQuery = 'SELECT * FROM erp_portal.adminnewreg WHERE first_name = ?';
     $imageStmt = $conn->prepare($imageQuery);
     $imageStmt->execute([$user['first_name']]);
     $imageInfo = $imageStmt->fetch(PDO::FETCH_ASSOC);
