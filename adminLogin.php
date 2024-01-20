@@ -24,7 +24,7 @@
             if (password_verify($password, $user['password'])) {
                 // Store the user information in the session
                 $_SESSION['user'] = $user;
-                header('Location: admindashboard.php');
+                header('Location: adminLogin.php');
             } else {
                 $error_message = 'Invalid password. Please try again.';
             }
