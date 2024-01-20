@@ -64,7 +64,7 @@
 
     <div class="container">
         <div class="loginBody">
-            <form id = "login_form" action="adminlogin.php" method="POST">
+            <form id = "login_form" action="adminLogin.php" method="POST">
                 <div class="AdminLogin">Admin Login</div><br>
                 <div class="loginInputsContainer">
                     <label for="username">User name</label>
