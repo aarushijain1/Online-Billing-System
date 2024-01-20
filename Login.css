@@ -94,8 +94,13 @@ body{
 
 a {
     margin-top: 3%;
-    background: rgb(226, 172, 9);
+    /* background: rgb(226, 172, 9); */
     color: black;
+}
+
+.admin{
+    margin-top: 20px;
+    text-align: center;
 }
 
 footer{
