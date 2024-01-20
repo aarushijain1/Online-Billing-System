@@ -12,19 +12,11 @@
     $user = $_SESSION['user'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // $name = $_POST['Name'];
-        // $address = $_POST['address'];
-        // $resTel = $_POST['res_tel'];
-        // $resOff = $_POST['res_off'];
-        // $resMob = $_POST['res_mob'];
         $department = $_POST['dept'];
-        // $email = $_POST['email'];
-        // $bankAcc = $_POST['bank_acc'];
-        // $bankName = $_POST['bank_name'];
-        // $ifsc = $_POST['ifsc'];
-        // $bankBranch = $_POST['bank_branch'];
+        $off_email = $_POST['off_email'];
         $program = $_POST['prog'];
         $branch = $_POST['branch'];
+        $year = $_POST['year'];
         $sem = $_POST['sem'];
         $subjectCode = $_POST['paper_code'];
         $subj = $_POST['paper_name'];
@@ -37,28 +29,20 @@
         $amt2 = $_POST['amt2'];
         $totalamt = $_POST['totalamt'];
         $rsinword = $_POST['rsinword'];
-        $amt3 = $_POST['amt3'];        
+        $amt3 = $_POST['amt3'];  
+        $currentDate = $_POST['currentDate'];       
         
         $query = "INSERT INTO erp_portal.internal_exam 
-                  ( dept, prog, branch, sem, paper_code, paper_name, session, prac, student, no, amt, amt1, amt2, totalamt, rsinword, amt3) 
+                  ( dept, off_email, prog, branch, year, sem, paper_code, paper_name, session, prac, student, no, amt, amt1, amt2, totalamt, rsinword, amt3, currentDate) 
                   VALUES 
-                  (:department, :program, :branch, :sem, :subjectCode, :subj, :session, :prac, :student, :no, :amt, :amt1, :amt2, :totalamt, :rsinword, :amt3)";
+                  (:department, :off_email, :program, :branch, :year, :sem, :subjectCode, :subj, :session, :prac, :student, :no, :amt, :amt1, :amt2, :totalamt, :rsinword, :amt3, :currentDate)";
                   
         $stmt = $conn->prepare($query);
-
-        // $stmt->bindParam(':name', $name);
-        // $stmt->bindParam(':address', $address);
-        // $stmt->bindParam(':resTel', $resTel);
-        // $stmt->bindParam(':resOff', $resOff);
-        // $stmt->bindParam(':resMob', $resMob);
         $stmt->bindParam(':department', $department);
-        // $stmt->bindParam(':email', $email);
-        // $stmt->bindParam(':bankAcc', $bankAcc);
-        // $stmt->bindParam(':bankName', $bankName);
-        // $stmt->bindParam(':ifsc', $ifsc);
-        // $stmt->bindParam(':bankBranch', $bankBranch);
+        $stmt->bindParam(':off_email', $off_email);
         $stmt->bindParam(':program', $program);
         $stmt->bindParam(':branch', $branch);
+        $stmt->bindParam(':year', $year);
         $stmt->bindParam(':sem', $sem);
         $stmt->bindParam(':subjectCode', $subjectCode);
         $stmt->bindParam(':subj', $subj);
@@ -72,12 +56,11 @@
         $stmt->bindParam(':totalamt', $totalamt);
         $stmt->bindParam(':rsinword', $rsinword);
         $stmt->bindParam(':amt3', $amt3);
+        $stmt->bindParam(':currentDate', $currentDate);
 
         if ($stmt->execute()) {
-            // Data inserted successfully
             echo "Form filled successfully!";
         } else {
-            // Handle the error
             echo "Error inserting data: " . $stmt->errorInfo()[2];
         }
     }
