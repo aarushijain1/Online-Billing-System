@@ -7,63 +7,70 @@
 
     include("connection.php");
 
-    // Fetch res_add information from the newreg table
+    // Fetch information from the newreg table
+
+    $firstnameQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $firstnameStmt = $conn->prepare($firstnameQuery);
+    $firstnameStmt->execute([$user['first_name']]);
+    $firstnameInfo = $firstnameStmt->fetch(PDO::FETCH_ASSOC);
+
+    $lastnameQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $lastnameStmt = $conn->prepare($lastnameQuery);
+    $lastnameStmt->execute([$user['first_name']]);
+    $lastnameInfo = $lastnameStmt->fetch(PDO::FETCH_ASSOC);
+
     $addressQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
     $addressStmt = $conn->prepare($addressQuery);
     $addressStmt->execute([$user['first_name']]);
     $addressInfo = $addressStmt->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch res_mob_no information from the newreg table
     $resphoneNumberQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
     $resphoneNumberStmt = $conn->prepare($resphoneNumberQuery);
     $resphoneNumberStmt->execute([$user['first_name']]);
     $resphoneNumberInfo = $resphoneNumberStmt->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch off_mob_no information from the newreg table
     $offphoneNumberQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
     $offphoneNumberStmt = $conn->prepare($offphoneNumberQuery);
     $offphoneNumberStmt->execute([$user['first_name']]);
     $offphoneNumberInfo = $offphoneNumberStmt->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch mob_no information from the newreg table
     $mobileNumberQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
     $mobileNumberStmt = $conn->prepare($mobileNumberQuery);
     $mobileNumberStmt->execute([$user['first_name']]);
     $mobileNumberInfo = $mobileNumberStmt->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch email information from the newreg table
-    $emailQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
-    $emailStmt = $conn->prepare($emailQuery);
-    $emailStmt->execute([$user['first_name']]);
-    $emailInfo = $emailStmt->fetch(PDO::FETCH_ASSOC);
+    $panQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $panStmt = $conn->prepare($panQuery);
+    $panStmt->execute([$user['first_name']]);
+    $panInfo = $panStmt->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch bank no information from the newreg table
+    $bankBranchQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $bankBranchStmt = $conn->prepare($bankBranchQuery);
+    $bankBranchStmt->execute([$user['first_name']]);
+    $bankBranchInfo = $bankBranchStmt->fetch(PDO::FETCH_ASSOC);
+
+    $banknoQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
+    $banknoStmt = $conn->prepare($banknoQuery);
+    $banknoStmt->execute([$user['first_name']]);
+    $banknoInfo = $banknoStmt->fetch(PDO::FETCH_ASSOC);
+
     $bankQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
     $bankStmt = $conn->prepare($bankQuery);
     $bankStmt->execute([$user['first_name']]);
     $bankInfo = $bankStmt->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch bank information from the newreg table
-    $bankQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
-    $bankStmt = $conn->prepare($bankQuery);
-    $bankStmt->execute([$user['first_name']]);
-    $bankInfo = $bankStmt->fetch(PDO::FETCH_ASSOC);
-
-    // Fetch ifsc information from the newreg table
     $ifscQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
     $ifscStmt = $conn->prepare($ifscQuery);
     $ifscStmt->execute([$user['first_name']]);
     $ifscInfo = $ifscStmt->fetch(PDO::FETCH_ASSOC);
 
     $otherBankNameQuery = 'SELECT * FROM erp_portal.newreg WHERE first_name = ?';
-$otherBankNameStmt = $conn->prepare($otherBankNameQuery);
-$otherBankNameStmt->execute([$user['first_name']]);
-$otherBankNameInfo = $otherBankNameStmt->fetch(PDO::FETCH_ASSOC);
+    $otherBankNameStmt = $conn->prepare($otherBankNameQuery);
+    $otherBankNameStmt->execute([$user['first_name']]);
+    $otherBankNameInfo = $otherBankNameStmt->fetch(PDO::FETCH_ASSOC);
 
-// Other Bank Name
-$otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo['otherBankName'] : '';
-
-
+    // Other Bank Name
+    $otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo['otherBankName'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -92,12 +99,7 @@ $otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo
 
         <h2><u>BILL FOR PRACTICAL EXAMINATION(INTERNAL EXAMINER)</u></h2>
 
-        <!-- <div class="formno">
-            <label for="formNumber">Form Number:</label>
-            <input type="text" id="formNumber" name="formNumber" readonly>
-        </div> -->
-
-        <p>1. Name of External Examiner: <span><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] ?></span></p>
+        <p>1. Name of External Examiner: <?= isset($firstnameInfo['first_name']) ? $firstnameInfo['first_name'] : 'Not available' ?> <?= isset($lastnameInfo['last_name']) ? $lastnameInfo['last_name'] : 'Not available' ?> </p>
 
         <p>2. Residential Address: <?= isset($addressInfo['address']) ? $addressInfo['address'] : 'Not available' ?></p> </p>
 
@@ -107,7 +109,6 @@ $otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo
 
         <p> C)Tel(Mobile): <?= isset($mobileNumberInfo['mobileNumber']) ? $mobileNumberInfo['mobileNumber'] : 'Not available' ?></p></p>
 
-        <!-- Department Name -->
         <label for="Department">4. Select Department:</label>
         <select id="department" name="dept" required>
             <option value="" disabled selected>Select an option</option>
@@ -124,20 +125,30 @@ $otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo
         <br>
 
         <p>5. Email Address: <?= isset($emailInfo['email']) ? $emailInfo['email'] : 'Not available' ?></p> </p>
-        <p>6. Bank Account Number: <?= isset($bankInfo['bank_no']) ? $bankInfo['bank_no'] : 'Not available' ?></p>
-        <p>7. Name of the Bank:  <?php
-    if ($bankInfo['bank'] === 'other') {
-        echo isset($bankInfo['otherBankName']) ? $bankInfo['otherBankName'] : 'Not available';
-    } else {
-        echo $bankInfo['bank'];
-    }
-    ?></p>
-        <p>8. IFSC Code: <?= isset($ifscInfo['ifsc']) ? $ifscInfo['ifsc'] : 'Not available' ?></p> </p>
+
+        <p>6. Official Email Address <input type="email" id="off_email" name="off_email"
+                    placeholder="Enter official email" required></p>
+        </div>
+
+        <p>7. PAN No.: <?= isset($panInfo['pan']) ? $panInfo['pan'] : 'Not available' ?></p></p>
+
+        <p>8. Bank Account No.: <?= isset($bankInfo['bank_no']) ? $bankInfo['bank_no'] : 'Not available' ?></p>
+
+        <p>9. Name of the Bank:  <?php
+            if ($bankInfo['bank'] === 'other') {
+            echo isset($bankInfo['otherBankName']) ? $bankInfo['otherBankName'] : 'Not available';
+            } else {
+            echo $bankInfo['bank'];
+            }
+        ?></p>
+
+        <p>10. Bank Branch: <?= isset($bankBranchInfo['bank_branch']) ? $bankBranchInfo['bank_branch'] : 'Not available' ?></p> </p>
+
+        <p>11. IFSC Code: <?= isset($ifscInfo['ifsc']) ? $ifscInfo['ifsc'] : 'Not available' ?></p> </p>
 
         <div class="content-box">
             <h3><b><u>CONDUCT OF PRACTICAL EXAMINATION(INTERNAL EXAMINER)</u></b></h3>
 
-            <!-- Programme -->
             <label for="programme">Programme:</label>
             <select id="programme" name="prog">
                 <option value="" disabled selected>Select an option</option>
@@ -153,7 +164,6 @@ $otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo
             </select>
             <br>
 
-            <!-- Branch -->
             <label for="branch">Branch:</label>
             <select id="branch" name="branch">
                 <option value="" disabled selected>Select an option</option>
@@ -181,6 +191,11 @@ $otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo
             </select>
             <br>
 
+            <label for="year">Academic Year:</label>
+            <input type="text" id="year" name="year" required onclick="showYearMessage()" onblur="hideYearMessage()">
+            <p id="yearMessage" style="display: none; color: #FF0000; margin:0; padding:0; font-size: smaller;">Format should be: 2022-2026</p>
+            <br>
+
             <label for="sem">Semester:</label>
             <select id="sem" name="sem" >
                 <option value="" disabled selected>Select an option</option>
@@ -194,13 +209,11 @@ $otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo
                 <option value="8">8</option>
             </select>
 
-            <!-- Paper Code -->
             <br>
             <label for="pprcode">Enter Paper Code:</label>
             <input type="text" id="pprcode" name="paper_code" required onclick="showSubjectCodeMessage()" onblur="hideSubjectCodeMessage()">
             <p id="subjectCodeMessage" style="display: none; color: #FF0000; margin:0; padding:0; font-size: smaller;">Format should be: BAS-101</p>
 
-            <!-- Paper Name -->
             <br>
             <label for="ppr">Enter Paper Name:</label>
             <input type="text" id="ppr" name="paper_name" required onclick="showSubjectMessage()" onblur="hideSubjectMessage()">
@@ -249,17 +262,19 @@ $otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo
         <div class="content-box2">
             <p id="undertaking"><strong>*Undertaking:</strong> certified that I will show this income of Rs. <label
                     for="amt"></label><input type="number" id="amt3" name="amt3" placeholder="Enter Amount" required> in
-                my
-                income return.</p>
+                my income Tax return.</p>
 
             <p class="pay"> Received Payment</p>
 
-            <p id="currentDate"></p><br><br><br><br>
+            <div class="form-group">
+        <label for="currentDate">Current Date:</label>
+        <input type="date" id="currentDate" name="currentDate" required>
+    </div><br><br>
 
-            <p><b>Signature of Examiner <br><br><br>Verfication by the Centre Superintendent (Practical) of Concerned Department</b></p>
+            <p id = "verify"><b>Signature of Examiner <br><br><br>Examiner Verfication by the Centre Superintendent (Practical) of Concerned Department</b></p>
             <hr>
-            <p>Name of the Centre Superintendent (Practical):</p>
-            <p>It is certified that the detail mentioned above are correct of the best of my knowledge and belief. The marks of the Exam has been entered in the Examination Portal and hard copy of attendance sheet and award list duly signed by External Examiner has been submitted in the Examination Divisions.</p><br><br><br>
+            <p>Name of the Centre Superintendent (Practical) :</p>
+            <p>It is certified that the detail mentioned above are correct of the best of my knowledge and belief. The marks of the Exam has been entered in the Examination Portal and hard copy of attendance sheet and award list duly signed by External Examiner has been submitted in the Examination Divisions.</p><br>
             <p>Signature of Centre Superintendent (Practical):</p>
             <p id="sign"><b>Countersigned by</b></p>
             <p><span>Consultant (Exam)</span><span>Dean(EA)/Dy.COE</span></p>
@@ -269,7 +284,7 @@ $otherBankName = isset($otherBankNameInfo['otherBankName']) ? $otherBankNameInfo
         <button type="reset">Reset</button>
 
     </form>
-    <script> <?php require_once("script3.js");?> </script>
+    <script> <?php require_once("prac.js");?> </script>
 </body>
 
 </html>
