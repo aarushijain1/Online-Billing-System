@@ -1,29 +1,29 @@
-function showSubjectCodeMessage() {
+  function showSubjectCodeMessage() {
     var message = document.getElementById("subjectCodeMessage");
     message.style.display = "block";
-}
+  }
 
-function hideSubjectCodeMessage() {
+  function hideSubjectCodeMessage() {
     var message = document.getElementById("subjectCodeMessage");
     message.style.display = "none";
-}
+  }
 
-function showSubjectMessage() {
+  function showSubjectMessage() {
     var message = document.getElementById("subjectMessage");
     message.style.display = "block";
-}
+  }
 
-function hideSubjectMessage() {
+  function hideSubjectMessage() {
     var message = document.getElementById("subjectMessage");
     message.style.display = "none";
-}
+  }
 
-function showYearMessage() {
+  function showYearMessage() {
     var message = document.getElementById("yearMessage");
     message.style.display = "block";
-}
+  }
 
-function hideYearMessage() {
+  function hideYearMessage() {
     var message = document.getElementById("yearMessage");
     message.style.display = "none";
-}
+  }
