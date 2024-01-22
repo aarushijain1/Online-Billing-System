@@ -25,7 +25,6 @@
         </div>
         <br>
 
-        <!-- Personal Details -->
         <h3>Admin Profile</h3>
 
         <div class="form-group">
@@ -52,12 +51,11 @@
             </select>
         </div>
 
-        <!-- Contact Details -->
         <h3>Contact Details</h3>
 
         <div class="form-group">
             <label for="mobileNumber">Mobile Number:</label>
-            <input type="tel" id="mobileNumber" name="mobileNumber" required>
+            <input type="tel" id="mobileNumber" name="mobileNumber" maxlength="10" oninput="validatePhoneNumber(this.value)" required>
         </div>
 
         <div class="form-group">
@@ -65,7 +63,6 @@
             <input type="email" id="offemail" name="offemail">
         </div>
 
-        <!-- Address Details -->
         <h3>Address Details</h3>
 
         <div class="form-group">
@@ -100,17 +97,16 @@
 
         <div class="form-group">
             <label for="pincode">Pin Code:</label>
-            <input type="text" id="pincode" name="pincode" required>
+            <input type="text" id="pincode" name="pincode" maxlength="6" oninput="validatePinCode(this.value)" required>
         </div>        
 
-        <!-- Upload Documents -->
-        <h3>Upload Documents</h3>
+        <h3>Upload Document</h3>
 
         <div class="form-group">
             <label for="image">Passport Image:</label>
             <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png, .pdf" required>
         </div>
-        <!-- Submit Button -->
+
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
 
@@ -122,6 +118,29 @@
     document.getElementById('c').addEventListener('click', function () {
         window.open('adminregistration_form.php', '_blank');
     });
+
+    function validatePhoneNumber(value) {
+      const phoneNumberError = document.getElementById('phoneNumberError');
+      const isValid = /^\d{10}$/.test(value);
+
+      if (isValid) {
+        phoneNumberError.textContent = '';
+      } else {
+        phoneNumberError.textContent = 'Please enter a valid 10-digit phone number.';
+}
+}
+
+    function validatePinCode(value) {
+      const pinCodeError = document.getElementById('pinCodeError');
+      const isValid = /^\d{6}$/.test(value);
+
+      if (isValid) {
+        pinCodeError.textContent = '';
+      } else {
+        pinCodeError.textContent = 'Please enter a valid 6-digit PIN code.';
+}
+}
+
 </script>
 
 </html>
