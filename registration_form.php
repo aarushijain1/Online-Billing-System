@@ -27,7 +27,6 @@
         </div>
         <br>
 
-        <!-- Personal Details -->
         <h3>Faculty Profile</h3>
 
         <div class="form-group">
@@ -54,22 +53,21 @@
             </select>
         </div>
 
-        <!-- Contact Details -->
         <h3>Contact Details</h3>
 
         <div class="form-group">
             <label for="resphoneNumber">Residential Telephone Number:</label>
-            <input type="tel" id="resphoneNumber" name="resphoneNumber">
+            <input type="tel" id="resphoneNumber" name="resphoneNumber" maxlength="10" oninput="validatePhoneNumber(this.value)">
         </div>
 
         <div class="form-group">
             <label for="offphoneNumber">Office Telephone Number:</label>
-            <input type="tel" id="offphoneNumber" name="offphoneNumber">
+            <input type="tel" id="offphoneNumber" name="offphoneNumber" maxlength="10" oninput="validatePhoneNumber(this.value)">
         </div>
 
         <div class="form-group">
             <label for="mobileNumber">Mobile Number:</label>
-            <input type="tel" id="mobileNumber" name="mobileNumber" required>
+            <input type="tel" id="mobileNumber" name="mobileNumber" maxlength="10" oninput="validatePhoneNumber(this.value)" required >
         </div>
 
         <div class="form-group">
@@ -82,7 +80,6 @@
             <input type="email" id="offemail" name="offemail">
         </div>
 
-        <!-- Financial Details -->
         <h3>Financial Details</h3>
 
         <div class="form-group">
@@ -178,15 +175,14 @@
 
         <div class="form-group">
             <label for="ifsc">IFSC Code:</label>
-            <input type="text" id="ifsc" name="ifsc" required>
+            <input type="text" id="ifsc" name="ifsc" maxlength="11" oninput="validateIfscCode(this.value)" required>
         </div>
 
         <div class="form-group">
             <label for="pan">PAN Number:</label>
-            <input type="text" id="pan" name="pan" required>
+            <input type="text" id="pan" name="pan" maxlength="10" oninput="validatePanNumber(this.value)" required>
         </div>
 
-        <!-- Address Details -->
         <h3>Address Details</h3>
 
         <div class="form-group">
@@ -221,10 +217,9 @@
 
         <div class="form-group">
             <label for="pincode">Pin Code:</label>
-            <input type="text" id="pincode" name="pincode" required>
+            <input type="text" id="pincode" name="pincode" maxlength="6" oninput="validatePinCode(this.value)" required>
         </div>
 
-        <!-- Professional Details -->
         <h3>Professional Details</h3>
 
         <div class="form-group">
@@ -267,7 +262,6 @@
             </select>
         </div>
 
-        <!-- Upload Documents -->
         <h3>Upload Documents</h3>
 
         <div class="form-group">
@@ -287,7 +281,6 @@
             <input type="file" id="sign" name="sign" accept=".jpg, .jpeg, .png, .pdf" required>
         </div>
 
-        <!-- Submit Button -->
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
 
@@ -305,6 +298,50 @@
         otherBankInput.style.display = (select.value === 'other') ? 'block' : 'none';
         otherBankInput.required = (select.value === 'other');
     }
+
+    function validatePhoneNumber(value) {
+      const phoneNumberError = document.getElementById('phoneNumberError');
+      const isValid = /^\d{10}$/.test(value);
+
+      if (isValid) {
+        phoneNumberError.textContent = '';
+      } else {
+        phoneNumberError.textContent = 'Please enter a valid 10-digit phone number.';
+}
+}
+function validatePanNumber(value) {
+      const panNumberError = document.getElementById('panNumberError');
+      const isValid = /^[A-Za-z]{5}[0-9]{4}[A-Za-z]$/.test(value);
+
+      if (isValid) {
+        panNumberError.textContent = '';
+      } else {
+        panNumberError.textContent = 'Please enter a valid PAN number.';
+}
+}
+
+function validateIfscCode(value) {
+      const ifscCodeError = document.getElementById('ifscCodeError');
+      const isValid = /^[A-Za-z]{4}\d{7}$/.test(value);
+
+      if (isValid) {
+        ifscCodeError.textContent = '';
+      } else {
+        ifscCodeError.textContent = 'Please enter a valid IFSC code.';
+}
+}
+
+function validatePinCode(value) {
+      const pinCodeError = document.getElementById('pinCodeError');
+      const isValid = /^\d{6}$/.test(value);
+
+      if (isValid) {
+        pinCodeError.textContent = '';
+      } else {
+        pinCodeError.textContent = 'Please enter a valid 6-digit PIN code.';
+}
+}
+
 </script>
 
 </html>
