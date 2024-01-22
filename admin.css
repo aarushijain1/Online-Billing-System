@@ -1,30 +1,44 @@
 table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 20px;
-    font-size: 14px;
-    text-align: center;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
 }
 
-th, td {
-    border: 1px solid #dddddd;
-    padding: 12px;
+th,
+td {
+  border: 1px solid #dddddd;
+  padding: 12px;
 }
 
 th {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 tbody tr:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
+}
+
+#myTable_filter input {
+  width: 200px;
+  padding: 8px;
+  margin-bottom: 15px;
+  margin-left: 3px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  background: #fff url("https://cdn.datatables.net/1.10.25/images/search.png")
+    no-repeat right;
+  background-size: 20px 20px;
 }
 
 @media (max-width: 600px) {
-    th, td {
-        padding: 8px;
-    }
+  th,
+  td {
+    padding: 8px;
+  }
 }
