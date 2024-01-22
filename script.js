@@ -1,26 +1,19 @@
 function toggleSidebar() {
-    document.querySelector('.sidebar').classList.toggle('collapsed');
-  }
-  
-  function logout() {
-    // Add your logout logic here
-    //alert("Logout clicked");
-  }
+  document.querySelector(".sidebar").classList.toggle("collapsed");
+}
 
-  document.addEventListener('DOMContentLoaded', function () {
-    // Get all menu items
-    var menuItems = document.querySelectorAll('.menu-item');
+function logout() {}
 
-    // Add a click event listener to each menu item
-    menuItems.forEach(function (menuItem) {
-        menuItem.addEventListener('click', function () {
-            // Remove "active" class from all menu items
-            menuItems.forEach(function (item) {
-                item.classList.remove('active');
-            });
+document.addEventListener("DOMContentLoaded", function () {
+  var menuItems = document.querySelectorAll(".menu-item");
 
-            // Add "active" class to the clicked menu item
-            menuItem.classList.add('active');
-        });
+  menuItems.forEach(function (menuItem) {
+    menuItem.addEventListener("click", function () {
+      menuItems.forEach(function (item) {
+        item.classList.remove("active");
+      });
+
+      menuItem.classList.add("active");
     });
+  });
 });
