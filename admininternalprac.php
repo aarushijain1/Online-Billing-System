@@ -21,7 +21,6 @@
     <link rel="icon" href="logo.jpg" type="image/x-icon">
     <style> <?php include "admin.css" ?> </style>
 
-    <!-- Add these lines in the <head> section of your HTML -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
@@ -29,7 +28,7 @@
     <style>      
 
         #myTable_filter input {
-        width: 200px; /* Adjust the width as needed */
+        width: 200px; 
         padding: 8px;
         margin-bottom: 15px;
         margin-left:3px;
@@ -60,7 +59,7 @@
                 <th>Tel. No.(Off)</th>
                 <th>Mobile</th>
                 <th>Department</th>
-                <th>Email</th>
+                <th>Official Email</th>
                 <th>PAN No.</th>
                 <th>Bank Account No.</th>
                 <th>Account Holder Name</th>
@@ -91,7 +90,7 @@
                 <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['currentDate']; ?></td>
-                    <td><?php echo $row['first_name']; echo $row['last_name'];?></td>
+                    <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
                     <td><?php echo $row['address']; ?></td>
                     <td><?php echo $row['resphoneNumber']; ?></td>
                     <td><?php echo $row['offphoneNumber']; ?></td>
@@ -136,10 +135,10 @@
    
     $(document).ready(function() {
         $('#myTable').DataTable({
-            "paging": false, // Disable pagination if you want
-            "ordering": true, // Enable sorting
-            "searching": true, // Enable search/filtering
-            "info": false // Disable information display (e.g., "Showing 1 to 10 of 57 entries")
+            "paging": false, 
+            "ordering": true, 
+            "searching": true, 
+            "info": false 
         });
     });
 
