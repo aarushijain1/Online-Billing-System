@@ -214,8 +214,13 @@ $ifscInfo = $ifscStmt->fetch( PDO::FETCH_ASSOC );
 
         <hr>
 
-        <button type='submit'>Submit</button>
-        <button type='reset'>Reset</button>
+        <p id="d"><b><i>Note: After filling out the form, take out the printout and click the submit button.</i></b></p>
+
+        <div class = 'ButtonContainer'>
+            <button id = 'a' type = 'button' onclick="printForm()">Print</button><br>
+            <button id = 'b' type = 'reset'>Reset</button>
+            <button id = 'c' type= 'submit'>Submit</button>
+        </div>
 
         <script>
 
@@ -241,34 +246,42 @@ $ifscInfo = $ifscStmt->fetch( PDO::FETCH_ASSOC );
 
             var rowCount = 1;
 
-function addRow() {
-    // Get form values
+    function addRow() {
+
     var date = document.getElementById('date').value;
     var Number_of_AS_Evaluated = document.getElementById('Asheet').value;
     var Conveyance_Claimed = document.getElementById('conveyance1').value;
 
-    // Create a new table row
     var table = document.getElementById('dataTable');
     var newRow = table.insertRow(table.rows.length);
 
-    // Insert cells with the form values
     var cell0 = newRow.insertCell(0);
     var cell1 = newRow.insertCell(1);
     var cell2 = newRow.insertCell(2);
     var cell3 = newRow.insertCell(3);
 
-    // Populate cells with data
     cell0.innerHTML = rowCount++;
     cell1.innerHTML = date;
     cell2.innerHTML = Number_of_AS_Evaluated;
     cell3.innerHTML = Conveyance_Claimed;
 
-    // Clear the form fields
     document.getElementById('date').value = '';
     document.getElementById('Asheet').value = '';
     document.getElementById('conveyance1').value = '';
 }
 
+function printForm() {
+    document.getElementById('b').style.display = 'none'; 
+    document.getElementById('c').style.display = 'none'; 
+    document.getElementById('d').style.display = 'none'; 
+
+    window.print();
+
+    document.getElementById('b').style.display = 'inline'; 
+    document.getElementById('c').style.display = 'inline'; 
+    document.getElementById('d').style.display = 'inline'; 
+
+  }
 
         </script>
 
