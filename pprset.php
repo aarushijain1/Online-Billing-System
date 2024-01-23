@@ -196,12 +196,35 @@ placeholder = 'Enter official email' required></p>
 
 <p><b>Note: The Paper Setter is required to ensure that every column provided in the examination remuneration bill form is filled properly to enable the Accounts Branch to make payment expeditiously aaginst the claim.</b></p>
 
-<button type = 'submit'>Submit</button>
-<button type = 'reset'>Reset</button>
+<hr>
+
+<p id="d"><b><i>Note: After filling out the form, take out the printout and click the submit button.</i></b></p>
+
+<div class = 'ButtonContainer'>
+    <button id = 'a' type = 'button' onclick="printForm()">Print</button><br>
+    <button id = 'b' type = 'reset'>Reset</button>
+    <button id = 'c' type= 'submit'>Submit</button>
+</div>
+
 </form>
 
-<script> <?php require_once( 'script1.js' );
-?> </script>
+<script> 
+    <?php require_once( 'script1.js' );?> 
+
+    function printForm() {
+    document.getElementById('b').style.display = 'none'; 
+    document.getElementById('c').style.display = 'none'; 
+    document.getElementById('d').style.display = 'none'; 
+
+    window.print();
+
+    document.getElementById('b').style.display = 'inline'; 
+    document.getElementById('c').style.display = 'inline'; 
+    document.getElementById('d').style.display = 'inline'; 
+
+  }
+
+</script>
 
 </body>
 
