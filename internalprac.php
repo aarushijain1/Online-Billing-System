@@ -287,12 +287,33 @@ my income Tax return.</p>
 </div>
 
 </div>
-<button type = 'submit'>Submit</button>
-<button type = 'reset'>Reset</button>
+
+<p id="d"><b><i>Note: After filling out the form, take out the printout and click the submit button.</i></b></p>
+
+<div class = 'ButtonContainer'>
+    <button id = 'a' type = 'button' onclick="printForm()">Print</button><br>
+    <button id = 'b' type = 'reset'>Reset</button>
+    <button id = 'c' type= 'submit'>Submit</button>
+</div>
 
 </form>
-<script> <?php require_once( 'prac.js' );
-?> </script>
+<script> 
+    <?php require_once( 'prac.js' );?> 
+    
+    function printForm() {
+    document.getElementById('b').style.display = 'none'; 
+    document.getElementById('c').style.display = 'none'; 
+    document.getElementById('d').style.display = 'none'; 
+
+    window.print();
+
+    document.getElementById('b').style.display = 'inline'; 
+    document.getElementById('c').style.display = 'inline'; 
+    document.getElementById('d').style.display = 'inline'; 
+
+  }
+
+</script>
 </body>
 
 </html>
