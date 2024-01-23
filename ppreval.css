@@ -85,26 +85,42 @@ select {
   width: calc(50% - 40px);
 }
 
-button {
-  background-color: #4caf50;
-  color: #fff;
+.ButtonContainer {
+  margin-top: 10px;
+}
+
+.ButtonContainer button {
+  font-size: 15px;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 2%;
+  color: black;
 }
 
-button.add-row {
-  background-color: #008cba;
-  color: #fff;
-  padding: 8px 12px;
+.add-row{
+  background-color: #209124;
+  padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: white;
+
 }
 
-button:hover {
-  background-color: #333;
+#a {
+  background: rgb(62, 149, 243);
+}
+
+#b {
+  background: rgb(241, 67, 37);
+}
+
+#c {
+  background-color: #23b828;
 }
 
 form p {
