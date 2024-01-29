@@ -17,6 +17,7 @@ if ( $_POST ) {
     $accname = $_POST[ 'accname' ];
     $bank = $_POST[ 'bank' ];
     $otherBankName = $_POST[ 'otherBank' ];
+    $selectedBank = $_POST['bank'];
     $bankName = ( $selectedBank === 'other' ) ? $otherBankName : $selectedBank;
     $ifsc = $_POST[ 'ifsc' ];
     $pan = $_POST[ 'pan' ];
@@ -51,7 +52,7 @@ if ( $_POST ) {
     ] );
 
     // Fetch the user information from the database after registration
-    $query = 'SELECT * FROM users WHERE email = ?';
+    $query = 'SELECT * FROM newreg WHERE email = ?';
     $stmt = $conn->prepare( $query );
     $stmt->execute( [ $email ] );
 
