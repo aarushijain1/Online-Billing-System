@@ -198,7 +198,7 @@ Engineering-AI</option>
 
 <label for = 'year'>Academic Year:</label>
 <input type = 'text' id = 'year' name = 'year' required onclick = 'showYearMessage()' onblur = 'hideYearMessage()'>
-<p id = 'yearMessage' style = 'display: none; color: #FF0000; margin:0; padding:0; font-size: smaller;'>Format should be: 2022-2026</p>
+<p id = 'yearMessage' style = 'display: none; color: #FF0000; margin:0; padding:0; font-size: smaller;'>Format should be: 2022-26 EVEN</p>
 <br>
 
 <label for = 'sem'>Semester:</label>
