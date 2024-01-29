@@ -163,18 +163,25 @@ placeholder = 'Enter official email' required></p>
 <p><b>Details</b></p>
 <p><b>Remuneration Charges</b></p>
 
-<p><label for = 'charges'>1. Paper Setting Charges @ <b>Rs.850/-</b> per paper</label><input type = 'number' id = 'amt1' name = 'charges' placeholder = 'Enter Amount' required></p>
+<p><label for = 'charges'>1. Paper Setting Charges @ 
+<select id="ppramt" name="ppramt">
+  <option value = '' disabled selected>Select an option</option>
+    <option value="850">850</option>
+    <option value="1100">1100</option>
+    <option value="1200">1200</option>
+</select>
+  per paper</label><input type = 'number' id = 'amt1' name = 'charges' placeholder = 'Enter Amount' required></p>
 
 <p><label for = 'expenses'>2. Contingent expenses <b>Rs.100/-</b> e.g., Postage charges, CD, If any, etc <b>( Not Applicable for internal faculty Including Visiting Faculty )</b></label><input type = 'number' id = 'amt' name = 'expenses' placeholder = 'Enter Amount' required></p>
 <hr>
 
-<p><label for = 'total'><b>Total:</b></label><input type = 'number' id = 'amttotal' name = 'total' placeholder = 'Enter Total Amount:' required></p>
+<p><label for='total'><b>Total:</b></label><input type='number' id='amttotal' name='total' placeholder='Enter Total Amount:' required readonly></p>
 </div>
 
 <label for = 'rsinword'>Rupees ( in words ): </label>
 <input type = 'text' id = 'rsinword' name = 'rsinword' placeholder = 'Enter total amount in words' required>
 
-<p id = 'undertaking'><strong>*Undertaking:</strong> certified that I will show this income of Rs. <label for = 'amt'></label><input type = 'number' id = 'amt' name = 'amt' placeholder = 'Enter Amount' required> in my income Tax return.</p>
+<p id='undertaking'><strong>*Undertaking:</strong> certified that I will show this income of Rs. <span id='undertakingAmt'></span> in my income Tax return.</p>
 
 <div class = 'form-group'>
 <label for = 'currentDate'>Dated:</label>
@@ -223,6 +230,28 @@ placeholder = 'Enter official email' required></p>
     document.getElementById('d').style.display = 'inline'; 
 
   }
+  document.addEventListener('DOMContentLoaded', function() {
+    const paperSettingChargesInput = document.getElementById('amt1');
+    const contingentExpensesInput = document.getElementById('amt');
+    const totalInput = document.getElementById('amttotal');
+    const undertakingAmt = document.getElementById('undertakingAmt');
+
+    function updateTotal() {
+        const paperSettingCharges = parseFloat(paperSettingChargesInput.value) || 0;
+        const contingentExpenses = parseFloat(contingentExpensesInput.value) || 0;
+
+        const total = paperSettingCharges + contingentExpenses;
+
+        totalInput.value = total.toFixed(2);
+        undertakingAmt.textContent = total.toFixed(2);
+
+    }
+
+    paperSettingChargesInput.addEventListener('input', updateTotal);
+    contingentExpensesInput.addEventListener('input', updateTotal);
+
+    updateTotal();
+});
 
 </script>
 
