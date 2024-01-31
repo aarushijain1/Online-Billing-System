@@ -26,17 +26,15 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' ) {
     $no = $_POST[ 'no' ];
     $amt = $_POST[ 'amt' ];
     $amt1 = $_POST[ 'amt1' ];
-    $amt2 = $_POST[ 'amt2' ];
     $totalamt = $_POST[ 'totalamt' ];
     $rsinword = $_POST[ 'rsinword' ];
-    $amt3 = $_POST[ 'amt3' ];
 
     $currentDate = $_POST[ 'currentDate' ];
 
     $query = "INSERT INTO erp_portal.internal_exam 
-                  ( dept, off_email, prog, branch, year, sem, paper_code, paper_name, session, prac, student, no, amt, amt1, amt2, totalamt, rsinword, amt3, currentDate) 
+                  ( dept, off_email, prog, branch, year, sem, paper_code, paper_name, session, prac, student, no, amt, amt1,  totalamt, rsinword, currentDate) 
                   VALUES 
-                  (:department, :off_email, :program, :branch, :year, :sem, :subjectCode, :subj, :session, :prac, :student, :no, :amt, :amt1, :amt2, :totalamt, :rsinword, :amt3, :currentDate)";
+                  (:department, :off_email, :program, :branch, :year, :sem, :subjectCode, :subj, :session, :prac, :student, :no, :amt, :amt1, :totalamt, :rsinword,  :currentDate)";
 
     $stmt = $conn->prepare( $query );
     $stmt->bindParam( ':department', $department );
@@ -53,10 +51,8 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' ) {
     $stmt->bindParam( ':no', $no );
     $stmt->bindParam( ':amt', $amt );
     $stmt->bindParam( ':amt1', $amt1 );
-    $stmt->bindParam( ':amt2', $amt2 );
     $stmt->bindParam( ':totalamt', $totalamt );
     $stmt->bindParam( ':rsinword', $rsinword );
-    $stmt->bindParam( ':amt3', $amt3 );
     $stmt->bindParam( ':currentDate', $currentDate );
 
     if ( $stmt->execute() ) {
