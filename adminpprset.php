@@ -34,7 +34,6 @@
     <table id="myTable">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Date</th>
                 <th>Name</th>
                 <th>Department</th>
@@ -47,6 +46,8 @@
                 <th>Semester</th>
                 <th>Subject Code</th>
                 <th>Subject</th>
+                <th>Per Paper Amount</th>
+                <th>Number of Question Paper Set</th>
                 <th>Paper Setting Charges</th>
                 <th>Contingent Expenses</th>
                 <th>Total Amount</th>
@@ -55,7 +56,6 @@
         <tbody>
             <?php foreach ($data as $row): ?>
                 <tr>
-                    <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['currentDate']; ?></td>
                     <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
                     <td><?php echo $row['dept']; ?></td>
@@ -68,6 +68,8 @@
                     <td><?php echo $row['sem']; ?></td>
                     <td><?php echo $row['sub_code']; ?></td>
                     <td><?php echo $row['sub']; ?></td>
+                    <td><?php echo $row['ppramt']; ?></td>
+                    <td><?php echo $row['nosheet']; ?></td>
                     <td><?php echo $row['charges']; ?></td>
                     <td><?php echo $row['expenses']; ?></td>
                     <td><?php echo $row['total']; ?></td>
