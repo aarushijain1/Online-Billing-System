@@ -34,7 +34,6 @@
     <table id="myTable">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Date</th>
                 <th>Name</th>
                 <th>Residential Address</th>
@@ -60,7 +59,6 @@
         <tbody>
             <?php foreach ($data as $row): ?>
                 <tr>
-                    <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['currentDate']; ?></td>
                     <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
                     <td><?php echo $row['address']; ?></td>
