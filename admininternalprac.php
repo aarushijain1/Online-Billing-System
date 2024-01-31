@@ -51,7 +51,6 @@
     <table id = "myTable">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Date</th>
                 <th>Name</th>
                 <th>Residential Address</th>
@@ -78,7 +77,6 @@
                 <th>Amt. per Student</th>                
                 <th>Total Amt. for Students</th>
                 <th>Conveyance Charges Applied</th>
-                <th>User Conveyance Charges</th>
                 <th>Total Amt.</th>
                 <th>Total Amt in Words</th>
                 
@@ -88,7 +86,6 @@
         <?php foreach ($data as $row): ?>
                 
                 <tr>
-                    <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['currentDate']; ?></td>
                     <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
                     <td><?php echo $row['address']; ?></td>
@@ -121,7 +118,6 @@
                     <td><?php echo $row['no']; ?></td>
                     <td><?php echo $row['amt']; ?></td>
                     <td><?php echo $row['amt1']; ?></td>
-                    <td><?php echo $row['amt2']; ?></td>
                     <td><?php echo $row['totalamt']; ?></td>
                     <td><?php echo $row['rsinword']; ?></td>
                                         
