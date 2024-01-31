@@ -143,6 +143,10 @@ $ifscInfo = $ifscStmt->fetch( PDO::FETCH_ASSOC );
             <option value='6'>6</option>
             <option value='7'>7</option>
             <option value='8'>8</option>
+            <option value='8'>9</option>
+            <option value='8'>10</option>
+            <option value='8'>11</option>
+            <option value='8'>12</option>
         </select>
         <hr>
 
@@ -176,12 +180,9 @@ $ifscInfo = $ifscStmt->fetch( PDO::FETCH_ASSOC );
 </tbody>
 </table><hr>
         <p><input type='number' id='nosheet' name='nosheet' placeholder='Enter Total Number of Students' required>Number
-            of A.S.
-            evaluated<input type='number' id='peramt' name='peramt' placeholder='Enter per answer sheet charge amount'
+            of A.S. evaluated<input type='number' id='peramt' name='peramt' placeholder='Enter per answer sheet charge amount'
                 required> per
-            A.S. amount
-            workout <input type='number' id='workoutamt' name='workoutamt'
-                placeholder='Enter Amount (Total Number of Students * per answer sheet charge amount)' required></p>
+            A.S. amount workout <input type='number' id='workoutamt' name='workoutamt' placeholder='Enter Amount (Total Number of Students * per answer sheet charge amount)' required></p>
         <p>Conveyance <input type='number' id='conveyance' name='conveyance' placeholder='Enter Total Conveyance Charge'
                 required></p>
 
@@ -193,11 +194,11 @@ $ifscInfo = $ifscStmt->fetch( PDO::FETCH_ASSOC );
         <p>Kindly deduct income tax as per applicable Income Tax Law. I will intimate my aforesaid income to my
             employer/ I will include it in my Income while calculating my Income Tax.</p><br><br>
 
-        <p id='sign'><b>Name and Signature of Evaluator</b></p>
-        <p>It is certified that <input type='text' id='user' name='user'> was appointed as Evaluator in the aforesaid
-            course and details of Answer Sheet as mentioned at S.No. verified and payment of Rs. <input type='number'
-                id='amt3' name='amt3' required> /- recommended in his/her favour of <input type='text' id='user'
-                name='users'> </p>
+        <p id='sign'><b>Name and Signature of Evaluator</b></p> 
+        It is certified that <?= isset( $firstnameInfo[ 'first_name' ] ) ? $firstnameInfo[ 'first_name' ] : 'Not available' ?> <?= isset( $lastnameInfo[ 'last_name' ] ) ? $lastnameInfo[ 'last_name' ] : 'Not available' ?> 
+        was appointed as Evaluator in the aforesaid course and details of Answer Sheet as mentioned at S.No. verified and payment of Rs. 
+        <input type='number' id='undertakingamt' name='undertakingamt' placeholder='Undertaking Amount' readonly required>        
+        /- recommended in his/her favour of <input type='text' id='user' name='users'> </p>
 
         <div class='form-group'>
             <label for='currentDate'>Dated:</label>
@@ -269,6 +270,41 @@ $ifscInfo = $ifscStmt->fetch( PDO::FETCH_ASSOC );
     document.getElementById('Asheet').value = '';
     document.getElementById('conveyance1').value = '';
 }
+
+function calculateAmountWorkout() {
+        var nosheet = parseFloat(document.getElementById('nosheet').value);
+        var peramt = parseFloat(document.getElementById('peramt').value);
+
+        var workoutamt = nosheet * peramt;
+        if (!isNaN(workoutamt)) {
+            document.getElementById('workoutamt').value = workoutamt;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('nosheet').addEventListener('input', calculateAmountWorkout);
+        document.getElementById('peramt').addEventListener('input', calculateAmountWorkout);
+    });
+
+function calculateTotalAndUndertaking() {
+    var workoutAmt = parseFloat(document.getElementById('workoutamt').value) || 0;
+    var conveyance = parseFloat(document.getElementById('conveyance').value) || 0;
+    var totalAmt = workoutAmt + conveyance;
+
+    if (!isNaN(totalAmt)) {
+        document.getElementById('totalamt').value = totalAmt;
+    }
+
+    document.getElementById('undertakingamt').value = totalAmt.toFixed(2);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    calculateTotalAndUndertaking();
+
+    document.getElementById('workoutamt').addEventListener('input', calculateTotalAndUndertaking);
+    document.getElementById('conveyance').addEventListener('input', calculateTotalAndUndertaking);
+});
+
 
 function printForm() {
     document.getElementById('b').style.display = 'none'; 
