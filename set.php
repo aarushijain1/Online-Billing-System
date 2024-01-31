@@ -20,13 +20,15 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' ) {
     $sem = $_POST[ 'sem' ];
     $subjectCode = $_POST[ 'sub_code' ];
     $subj = $_POST[ 'sub' ];
+    $ppramt = $_POST[ 'ppramt' ];
+    $nosheet = $_POST[ 'nosheet' ];
     $charges = $_POST[ 'charges' ];
     $expenses = $_POST[ 'expenses' ];
     $total = $_POST[ 'total' ];
     $currentDate = $_POST[ 'currentDate' ];
 
-    $query = "INSERT INTO erp_portal.paper_setting ( dept, off_email, prog, year, sem, sub_code, sub, charges, expenses, total, currentDate) 
-                  VALUES (:department, :off_email, :program, :year, :sem, :subjectCode, :subj, :charges, :expenses, :total, :currentDate)";
+    $query = "INSERT INTO erp_portal.paper_setting ( dept, off_email, prog, year, sem, sub_code, sub, ppramt, nosheet, charges, expenses, total, currentDate) 
+                  VALUES (:department, :off_email, :program, :year, :sem, :subjectCode, :subj, :ppramt, :nosheet, :charges, :expenses, :total, :currentDate)";
     $stmt = $conn->prepare( $query );
     $stmt->bindParam( ':department', $department );
     $stmt->bindParam( ':off_email', $off_email );
@@ -35,6 +37,8 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' ) {
     $stmt->bindParam( ':sem', $sem );
     $stmt->bindParam( ':subjectCode', $subjectCode );
     $stmt->bindParam( ':subj', $subj );
+    $stmt->bindParam( ':ppramt', $ppramt );
+    $stmt->bindParam( ':nosheet', $nosheet );
     $stmt->bindParam( ':charges', $charges );
     $stmt->bindParam( ':expenses', $expenses );
     $stmt->bindParam( ':total', $total );
