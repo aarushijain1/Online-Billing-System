@@ -147,6 +147,10 @@ placeholder = 'Enter official email' required></p>
 <option value = '6'>6</option>
 <option value = '7'>7</option>
 <option value = '8'>8</option>
+<option value='8'>9</option>
+<option value='8'>10</option>
+<option value='8'>11</option>
+<option value='8'>12</option>
 </select>
 <br>
 
@@ -170,7 +174,10 @@ placeholder = 'Enter official email' required></p>
     <option value="1100">1100</option>
     <option value="1200">1200</option>
 </select>
-  per paper</label><input type = 'number' id = 'amt1' name = 'charges' placeholder = 'Enter Amount' required></p>
+  per paper. Total number of question papers set
+  <input type='number' id='nosheet' name='nosheet' placeholder='Enter Total Number of Question Papers Set' required>
+</label>
+<input type = 'number' id = 'amt1' name = 'charges' placeholder = 'Enter Total Amount' required></p>
 
 <p><label for = 'expenses'>2. Contingent expenses <b>Rs.100/-</b> e.g., Postage charges, CD, If any, etc <b>( Not Applicable for internal faculty Including Visiting Faculty )</b></label><input type = 'number' id = 'amt' name = 'expenses' placeholder = 'Enter Amount' required></p>
 <hr>
@@ -181,7 +188,7 @@ placeholder = 'Enter official email' required></p>
 <label for = 'rsinword'>Rupees ( in words ): </label>
 <input type = 'text' id = 'rsinword' name = 'rsinword' placeholder = 'Enter total amount in words' required>
 
-<p id='undertaking'><strong>*Undertaking:</strong> certified that I will show this income of Rs. <span id='undertakingAmt'></span> in my income Tax return.</p>
+<p id='undertaking'><strong>*Undertaking:</strong> certified that I will show this income of Rs. <input type='number' id='undertakingamt' name='undertakingamt' placeholder='Undertaking Amount' readonly required> in my income Tax return.</p>
 
 <div class = 'form-group'>
 <label for = 'currentDate'>Dated:</label>
@@ -230,27 +237,38 @@ placeholder = 'Enter official email' required></p>
     document.getElementById('d').style.display = 'inline'; 
 
   }
-  document.addEventListener('DOMContentLoaded', function() {
-    const paperSettingChargesInput = document.getElementById('amt1');
-    const contingentExpensesInput = document.getElementById('amt');
-    const totalInput = document.getElementById('amttotal');
-    const undertakingAmt = document.getElementById('undertakingAmt');
+  function calculateCharges() {
+    var nosheet = parseFloat(document.getElementById('nosheet').value) || 0;
+    var ppramt = parseFloat(document.getElementById('ppramt').value) || 0;
 
-    function updateTotal() {
-        const paperSettingCharges = parseFloat(paperSettingChargesInput.value) || 0;
-        const contingentExpenses = parseFloat(contingentExpensesInput.value) || 0;
+    var charges = nosheet * ppramt;
+    if (!isNaN(charges)) {
+        document.getElementById('amt1').value = charges;
+    }
+}
 
-        const total = paperSettingCharges + contingentExpenses;
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('nosheet').addEventListener('input', calculateCharges);
+    document.getElementById('ppramt').addEventListener('change', calculateCharges);   
+});
 
-        totalInput.value = total.toFixed(2);
-        undertakingAmt.textContent = total.toFixed(2);
+function calculateTotalAndUndertaking() {
+    var charges = parseFloat(document.getElementById('amt1').value) || 0;
+    var expenses = parseFloat(document.getElementById('amt').value) || 0;
+    var totalAmt = charges + expenses;
 
+    if (!isNaN(totalAmt)) {
+        document.getElementById('amttotal').value = totalAmt;
     }
 
-    paperSettingChargesInput.addEventListener('input', updateTotal);
-    contingentExpensesInput.addEventListener('input', updateTotal);
+    document.getElementById('undertakingamt').value = totalAmt.toFixed(2);
+}
 
-    updateTotal();
+document.addEventListener('DOMContentLoaded', function() {
+    calculateTotalAndUndertaking();
+
+    document.getElementById('amt1').addEventListener('input', calculateTotalAndUndertaking);
+    document.getElementById('amt').addEventListener('input', calculateTotalAndUndertaking);
 });
 
 </script>
