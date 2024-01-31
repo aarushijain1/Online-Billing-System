@@ -210,6 +210,10 @@ Engineering-AI</option>
 <option value = '6'>6</option>
 <option value = '7'>7</option>
 <option value = '8'>8</option>
+<option value='8'>9</option>
+<option value='8'>10</option>
+<option value='8'>11</option>
+<option value='8'>12</option>
 </select>
 
 <br>
@@ -252,9 +256,7 @@ student <input type = 'number' id = 'amt' name = 'amt' placeholder = 'Enter Amou
 </p>
 
 <p>2. Conveyance Charges( Actual Tax Fare ) or Rs. <input type = 'number' id = 'amt1' name = 'amt1'
-placeholder = 'Enter Amount' required> which ever is less. <input type = 'number' id = 'amt2' name = 'amt2'
-placeholder = 'Enter Amount' required></p>
-
+placeholder = 'Enter Amount' required> which ever is less. 
 <p><b>Total amount of Honorarium and Conveyance</b> <input type = 'number' id = 'totalamt' name = 'totalamt'
 placeholder = 'Enter Total Amount' required></p>
 </div>
@@ -263,8 +265,7 @@ placeholder = 'Enter Total Amount' required></p>
 <input type = 'text' id = 'rsinword' name = 'rsinword' placeholder = 'Enter total amount in words' required>
 
 <div class = 'content-box2'>
-<p id = 'undertaking'><strong>*Undertaking:</strong> certified that I will show this income of Rs. <label
-for = 'amt'></label><input type = 'number' id = 'amt3' name = 'amt3' placeholder = 'Enter Amount' required> in
+<p id = 'undertaking'><strong>*Undertaking:</strong> certified that I will show this income of Rs.<input type='number' id='undertakingamt' name='undertakingamt' placeholder='Undertaking Amount' readonly required> in
 my income Tax return.</p>
 
 <div class = 'form-group'>
@@ -296,19 +297,6 @@ my income Tax return.</p>
 </form>
 <script> 
     <?php require_once( 'prac.js' );?> 
-
-    function printForm() {
-    document.getElementById('b').style.display = 'none'; 
-    document.getElementById('c').style.display = 'none'; 
-    document.getElementById('d').style.display = 'none'; 
-
-    window.print();
-
-    document.getElementById('b').style.display = 'inline'; 
-    document.getElementById('c').style.display = 'inline'; 
-    document.getElementById('d').style.display = 'inline'; 
-
-  }
   
 </script>
 </body>
